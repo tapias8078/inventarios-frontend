@@ -2,7 +2,7 @@ import React from 'react'
 
 const MarcaView = () => {
   return (
-    <div>MarcaView</div>
+    <div>MarcaView repositorio</div>
   )
 }
 
