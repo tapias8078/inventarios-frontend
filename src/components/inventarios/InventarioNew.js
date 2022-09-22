@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const InventarioNew = ({handleOpenModal}) => {
   return (
     <div className='sidebar'>
