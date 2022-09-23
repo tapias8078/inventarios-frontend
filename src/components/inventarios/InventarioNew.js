@@ -1,7 +1,81 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
+import { getUsuarios} from '../../services/usuariosService';
+import { getMarcas} from '../../services/marcaService';
+import { getTiposEquipos} from '../../services/tipoEquipoService';
+import {getEstadosEquipos} from '../../services/estadoEquipoService';
 
+export const InventarioNew = ({handleOpenModal}) => {
 
-const InventarioNew = ({handleOpenModal}) => {
+    const [ usuarios, setUsuarios] = useState ([]);
+    const [ marcas, setMarcas] = useState ([]);
+    const [ tipos, setTipos] = useState ([]);
+    const [ estados, setEstados] = useState ([]);
+
+    useEffect (() => {
+        const listarUsuarios = async () => {
+
+            try {
+                const { data} = await getUsuarios();
+                setUsuarios (data);
+                console.log(data);
+            } catch (error){
+                console.log (error);
+            }
+            
+        }
+        listarUsuarios();
+
+    }, []); 
+       
+
+    useEffect (() => {
+        const listarMarcas = async () => {
+
+            try {
+                const { data} = await getMarcas();
+                setMarcas(data);
+                console.log(data);
+            } catch (error){
+                console.log (error);
+            }
+            
+        }
+        listarMarcas();
+
+    }, []); 
+
+    useEffect (() => {
+        const listarTipos = async () => {
+
+            try {
+                const { data} = await getTiposEquipos();
+                setTipos(data);
+                console.log(data);
+            } catch (error){
+                console.log (error);
+            }
+            
+        }
+        listarTipos();
+
+    }, []); 
+
+    useEffect (() => {
+        const listarEstados = async () => {
+
+            try {
+                const { data} = await getEstadosEquipos();
+                setEstados(data);
+                console.log(data);
+            } catch (error){
+                console.log (error);
+            }
+            
+        }
+        listarEstados();
+
+    }, []); 
+
   return (
     <div className='sidebar'>
         <div className='container-fluid'>
@@ -55,19 +129,24 @@ const InventarioNew = ({handleOpenModal}) => {
                     <div className='col'>
                         <div className='mb-3'>
                             <label className='form-label'>Fecha Compra</label>
-                            <input type="text" name='fechaCompra' className='form-control' />
+                            <input type="date" name='fechaCompra' className='form-control' />
                         </div>  
                     </div>
                     <div className='col'>
                         <div className='mb-3'>
                             <label className='form-label'>Precio</label>
-                            <input type="text" name='precio' className='form-control' />
+                            <input type="number" name='precio' className='form-control' />
                         </div>  
                     </div>                    
                     <div className='col'>
                         <div className='mb-3'>
                             <label className='form-label'>Usuario</label>
-                            <input type="text" name='usuario' className='form-control' />
+                            <select className="form-select">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                             <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            </select>
                         </div>  
                     </div>                    
                 </div>
