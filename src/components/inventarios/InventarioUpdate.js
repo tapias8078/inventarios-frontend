@@ -293,7 +293,7 @@ export const InventarioUpdate = () => {
                 </div>
                 <div className='row'>
                   <div className='col'>
-                    <button className='btn btn-primary'>Actualizar</button>
+                    <button className='btn btn-primary' >Actualizar</button>
                   </div>
                 </div>
 
