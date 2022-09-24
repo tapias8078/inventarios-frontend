@@ -16,7 +16,7 @@ const crearInventario = (data) => {
     })
 }
 const editInventario = (inventarioId,data) => {
-    return axiosInstance.post(`inventario/${inventarioId}`,data,{
+    return axiosInstance.put(`inventario/${inventarioId}`,data,{
         headers : {
             'Content-type':'application/json'
         }
