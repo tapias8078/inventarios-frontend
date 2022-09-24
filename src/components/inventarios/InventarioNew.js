@@ -100,21 +100,28 @@ export const InventarioNew = ({ handleOpenModal, listarInventarios }) => {
             tipoEquipo:     {_id:tipo},
             estadoEquipo:   {_id:estado}
         }
-        console.log(inventario);
+        
         try {
             Swal.fire({
                 allowOutsideClick:false,
                 text:'Cargando...'
             })
             Swal.showLoading()
-            const {data} = await crearInventario(inventario)
+            const {data} = await crearInventario(inventario);
             console.log(data);
-            Swal.close()
-            handleOpenModal()
-            listarInventarios()
+            Swal.close();
+            handleOpenModal();
+            listarInventarios();
         } catch (error) {
             console.log(error);
-            Swal.close()
+            Swal.close();
+            let mensaje;
+        if (error && error.response && error.response.data){
+            mensaje = error.response.data;
+        } else {
+            mensaje = 'Ocurrio un error, por favor intente de nuevo';
+        }
+        Swal.fire('Error', mensaje, 'error');
         }
         
     }
