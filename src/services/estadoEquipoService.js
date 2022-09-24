@@ -8,7 +8,7 @@ const getEstadosEquipos = () => {
     })
 }
 
-//todo: crrar, actualizar, listar por id
+//todo: crear, actualizar, listar por id
 
 export {
     getEstadosEquipos
