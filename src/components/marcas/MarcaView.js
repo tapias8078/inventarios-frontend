@@ -1,108 +1,54 @@
-import React, { useState, useEffect } from 'react'
-import { getMarcas } from '../../services/marcaService'
-import { crearMarca } from '../../services/marcaService'
-import Swal from 'sweetalert2'
+import React, { useState, useEffect } from 'react';
+import { getMarcas } from '../../services/marcaService';
+import { MarcaNew } from './MarcaNew';
+import Swal from 'sweetalert2';
 
-const MarcaView = () => {
+export const MarcaView = () => {
+  
+  const [ marcas, setMarcas ] = useState ([]); 
+  const [openModal,setOpenModal]=useState(false)
+   
 
-  const [valoresForm, setValoresForm] = useState({})
-  const [marcas, setMarcas] = useState([])
-
-  const { marca = '', estado = '' } = valoresForm
-
-  const estados=['Activo','Inactivo']
+  const listarMarcas = async () => {
+    try {
+      Swal.fire({
+        allowOutsideClick:false,
+        text:'Cargando...'
+    });
+    Swal.showLoading();
+      const {data}= await getMarcas(); 
+      setMarcas(data);
+      Swal.close();
+    } catch (error) {
+      console.log(error); 
+      Swal.close();
+    }
+  }
 
   useEffect(()=>{
-    const listarMarcas= async () => {
-      try {
-        const {data} = await getMarcas()
-        setMarcas(data)
-        console.log(data)
-      } catch (error) {
-        console.log(error);
-      }    
-  }
-  listarMarcas()
-  },[])
+    listarMarcas();    
+  },[]);
 
-  const handleOnChange = ({ target }) => {
-    const { name, value } = target
-    setValoresForm({ ...valoresForm, [name]: value })
-    
+ 
+
+  const handleOpenModal = () => {
+    console.log('asasas');
+    setOpenModal(!openModal)
   }
 
-    const handleOnSubmit = async (e) => {
-      e.preventDefault()
-      const marca = {
-          marca, estado
-      }
-      
-      try {
-          Swal.fire({
-              allowOutsideClick:false,
-              text:'Cargando...'
-          })
-          Swal.showLoading()
-          const {data} = await crearMarca(marca);
-          console.log(data);
-          Swal.close();         
-          
-      } catch (error) {
-          console.log(error);
-          Swal.close();
-          let mensaje;
-      if (error && error.response && error.response.data){
-          mensaje = error.response.data;
-      } else {
-          mensaje = 'Ocurrio un error, por favor intente de nuevo';
-      }
-      Swal.fire('Error', mensaje, 'error');
-      }
-
-}
-
-  
   return (
-    <div className='sidebar'>
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col'>
-            <div className='sidebar-header'>
-              <h3>Marcas</h3>
-            </div>
-          </div>
-        </div>
-        <hr/>
-        <form onSubmit={(e)=>handleOnSubmit(e)}>
-          <div className='row'>
-            <div className='col'>
-              <div className='mb-4'>
-                <label className='form label mb-2'>Marca</label>
-                <input type='text' name='marca' required value={marca} className='form-control' onChange={(e) => handleOnChange(e)}/>
-              </div>
-            </div>          
-            <div className='col'>
-                            <div className='mb-3'>
-                                <label className='form-label'>Estado</label>
-                                <select className='form-select' name='estado' value={estado} required
-                                onChange={(e) => handleOnChange(e)}>
-                                  <option value="">--SELECCIONE--</option>
-                                  {
-                                    estados.map((estado)=>{
-                                      return <option>{estado}</option>
-                                    })
-                                  }
-                                </select>               
-                                
-                            </div>
-                        </div>
-          </div>
-          <button className='btn btn-primary'>Crear</button>
-        </form>
+    <div className='container'>
+      <div className='mt-2 mb-2 row row-cols-1 row-cols-md-4 g-4'>
+          tabla marcas
       </div>
+         {
+            openModal ? <MarcaNew handleOpenModal={handleOpenModal}
+                        listarMarcas={listarMarcas}/> :
+              (<button className='btn btn-primary fab' onClick={handleOpenModal}>
+                <i className='fa-solid fa-plus'></i>
+              </button>)
+                      
+            }
     </div>
-
   )
 }
-
-export { MarcaView }
