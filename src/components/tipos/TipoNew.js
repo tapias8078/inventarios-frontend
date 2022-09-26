@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import Swal from 'sweetalert2'
-import { crearMarca } from '../../services/marcaService'
+import { crearTiposEquipo } from '../../services/tipoEquipoService'
 
-export const MarcaNew = ({handleOpenModal, listarMarcas}) => {  
+export const TipoNew = ({handleOpenModal, listarTipos}) => {  
 
     const [valoresForm, setValoresForm] = useState({})
     const {nombre='', estado=''} = valoresForm
@@ -17,7 +17,7 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
-        const marca = {
+        const tipo = {
             nombre,estado
         }
         
@@ -27,11 +27,11 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
                 text:'Cargando...'
             })
             Swal.showLoading()
-            const {data} = await crearMarca(marca);
+            const {data} = await crearTiposEquipo(tipo);
             console.log(data);
             Swal.close();
             handleOpenModal();
-            listarMarcas()            
+            listarTipos()            
         } catch (error) {
             console.log(error);
             Swal.close();
@@ -52,7 +52,7 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
         <div className='row'>
           <div className='col'>
             <div className='sidebar-header'>
-              <h3>Marcas</h3>
+              <h3>Tipos Equipo</h3>
               <i className='fa-solid fa-xmark' onClick={handleOpenModal}></i>
             </div>
           </div>
@@ -66,7 +66,7 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
           <div className='row'>
             <div className='col'>
               <div className='mb-4'>
-                <label className='form label mb-2'>Marca</label>
+                <label className='form label mb-2'>Tipo Equipo</label>
                 <input type='text' name='nombre' value={nombre} onChange={(e) => handleOnChange(e)} required className='form-control' />
               </div>
             </div>          

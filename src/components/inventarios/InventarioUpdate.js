@@ -171,7 +171,7 @@ export const InventarioUpdate = () => {
         <div className='card-body'>
           <div className='row'>
             <div className='col-md-4'>
-              <img src={inventario?.foto} />
+              <img className='foto' src={inventario?.foto} />
             </div>
             <div className='col-md-8'>
               <form onSubmit={(e) => handleOnSubmit(e)}>

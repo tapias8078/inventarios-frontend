@@ -7,7 +7,7 @@ const InventarioCard = (props) => {
     return (
         <div className='col'>
             <div className='card'>
-                <img src={inventario.foto} className="card-img-top" alt="..." />
+                <img src={inventario.foto} className="card-img-top " alt="..." />
                 <div className='card-body'>
                     <h5 className='card-title'>Características</h5>
                     <hr />

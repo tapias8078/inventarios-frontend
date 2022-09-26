@@ -1,46 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import { getMarcas } from '../../services/marcaService';
 import { MarcaNew } from './MarcaNew';
+import { getMarcas } from '../../services/marcaService';
 import Swal from 'sweetalert2';
+import { MarcaFila } from './MarcaFila';
 
 export const MarcaView = () => {
   
-  const [ marcas, setMarcas ] = useState ([]); 
-  const [openModal,setOpenModal]=useState(false)
-   
-
-  const listarMarcas = async () => {
-    try {
+  
+  const [ marcas, setMarcas] = useState([])
+  const [openModal,setOpenModal]=useState(false) 
+  
+  
+  
+  const listarMarcas = async()=>{
+    try{
       Swal.fire({
         allowOutsideClick:false,
-        text:'Cargando...'
-    });
-    Swal.showLoading();
-      const {data}= await getMarcas(); 
-      setMarcas(data);
-      Swal.close();
-    } catch (error) {
-      console.log(error); 
-      Swal.close();
+        text:'Cargando'
+      })
+      Swal.showLoading()
+      const {data}=await getMarcas()
+      setMarcas(data)
+      Swal.close()
+    }catch(error){
+      console.log(error);
+      Swal.close()
     }
   }
-
+  
+  
   useEffect(()=>{
-    listarMarcas();    
-  },[]);
+    listarMarcas()
+  },[])
+  
+  
+    const handleOpenModal = () => {
+      console.log('asasas');
+      setOpenModal(!openModal)
+    }
 
- 
-
-  const handleOpenModal = () => {
-    console.log('asasas');
-    setOpenModal(!openModal)
-  }
 
   return (
-    <div className='container'>
-      <div className='mt-2 mb-2 row row-cols-1 row-cols-md-4 g-4'>
-          tabla marcas
-      </div>
+    <div className='container mt-3 card'>          
+    <div>
+      <h3>Marcas</h3>
+      <hr/>
+    </div>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Fecha de Creacion</th>
+      <th scope="col">Fecha de Actualizacion</th>
+      <th scope="col"></th>      
+    </tr>
+  </thead>
+  <tbody>    
+      {
+        marcas.map((marca, index)=>{
+          return <MarcaFila key={marca._id} marca={marca} index={index+1}/>
+        })
+      }   
+  </tbody>
+</table>
+  
          {
             openModal ? <MarcaNew handleOpenModal={handleOpenModal}
                         listarMarcas={listarMarcas}/> :
