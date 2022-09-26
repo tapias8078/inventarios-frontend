@@ -47,7 +47,7 @@ export const UsuarioView = () => {
       <h3>Usuarios</h3>
       <hr/>
     </div>
-    <table class="table table-striped">
+    <table className="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
