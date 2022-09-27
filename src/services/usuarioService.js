@@ -9,22 +9,22 @@ const getUsuarios = () => {
 }
 
 const crearUsuarios = (data) => {
-    return axiosInstance.post('usuarios',data,{
+    return axiosInstance.post('usuario',data,{
         headers : {
             'Content-type':'application/json'
         }
     })
 }
-const editUsuarios = (usuariosId,data) => {
-    return axiosInstance.put(`usuarios/${usuariosId}`,data,{
+const editUsuarios = (usuarioId,data) => {
+    return axiosInstance.put(`usuario/${usuarioId}`,data,{
         headers : {
             'Content-type':'application/json'
         }
     })
 }
 
-const getUsuariosPorId = (usuariosId) => {
-    return axiosInstance.get(`usuarios/${usuariosId}`,{
+const getUsuariosPorId = (usuarioId) => {
+    return axiosInstance.get(`usuario/${usuarioId}`,{
          headers : {
              'Content-type':'application/json'
          }
