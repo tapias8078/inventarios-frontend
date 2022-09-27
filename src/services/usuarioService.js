@@ -15,7 +15,7 @@ const crearUsuarios = (data) => {
         }
     })
 }
-const editUsuarios = (usuarioId,data) => {
+const editUsuario = (usuarioId,data) => {
     return axiosInstance.put(`usuario/${usuarioId}`,data,{
         headers : {
             'Content-type':'application/json'
@@ -35,5 +35,5 @@ const getUsuariosPorId = (usuarioId) => {
 //todo: crrar, actualizar, listar por id
 
 export {
-    getUsuarios, crearUsuarios, editUsuarios, getUsuariosPorId
+    getUsuarios, crearUsuarios, editUsuario, getUsuariosPorId
 }

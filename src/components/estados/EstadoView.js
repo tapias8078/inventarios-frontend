@@ -47,7 +47,7 @@ export const EstadoView = () => {
       <h3>Estados</h3>
       <hr/>
     </div>
-    <table class="table table-striped">
+    <table className="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
