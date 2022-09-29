@@ -86,6 +86,10 @@ export const InventarioUpdate = () => {
 
   }, []);
 
+  useEffect(() => {
+    getInventario();
+  }, [inventarioId]);
+
   const getInventario = async () => {
     try {
       Swal.fire({
@@ -102,9 +106,7 @@ export const InventarioUpdate = () => {
     }
   }
 
-  useEffect(() => {
-    getInventario();
-  }, [inventarioId]);
+ 
 
   useEffect(() => {
     setValoresForm({
