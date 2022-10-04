@@ -9,6 +9,7 @@ body{
 .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    min-height: 300px
 }
 
 .card:hover{
@@ -30,15 +31,34 @@ body{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.sidebar {
+.modalBackground{
     position:fixed;
     top:0;
     left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(200,200,200);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow:auto;
+}
+
+.sidebar {  
+    border:1px solid rgba(197,201,209);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);    
+    position:fixed;    
+    justify-content: center;    
     background: white;
-    width: 100%;
-    padding: 1rem 1.5rem;
-    height: 100%;
+    width: 80%;    
+    min-height: 20%;
     overflow: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
 }
 
 .sidebar-header {
@@ -47,6 +67,11 @@ body{
     align-items: center;
 }
 
-.foto{
-    max-width: 400px
+
+
+.foto{    
+    max-width: 300px;
+    max-height:320px;
 }
+
+

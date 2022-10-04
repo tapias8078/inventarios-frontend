@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Swal from 'sweetalert2'
-import { crearEstadosEquipo } from '../../services/estadoEquipoService'
+import { crearEstadoEquipo } from '../../services/estadoEquipoService'
 
 export const EstadoNew = ({handleOpenModal, listarEstados}) => {  
 
@@ -27,7 +27,7 @@ export const EstadoNew = ({handleOpenModal, listarEstados}) => {
                 text:'Cargando...'
             })
             Swal.showLoading()
-            const {data} = await crearEstadosEquipo(estados);
+            const {data} = await crearEstadoEquipo(estados);
             console.log(data);
             Swal.close();
             handleOpenModal();
@@ -47,12 +47,13 @@ export const EstadoNew = ({handleOpenModal, listarEstados}) => {
     }
 
   return (<>
+    <div className='modalBackground'>
     <div className='sidebar'>
       <div className='container'>
         <div className='row'>
           <div className='col'>
             <div className='sidebar-header'>
-              <h3>Estados</h3>
+              <h3>Nuevo Estado</h3>
               <i className='fa-solid fa-xmark' onClick={handleOpenModal}></i>
             </div>
           </div>
@@ -86,6 +87,7 @@ export const EstadoNew = ({handleOpenModal, listarEstados}) => {
           <button className='btn btn-primary'>Crear</button>
         </form>
       </div>
+    </div>
     </div>
     
     

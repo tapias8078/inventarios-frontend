@@ -12,6 +12,9 @@ export const UsuarioView = () => {
   const [openModal,setOpenModal]=useState(false) 
   
   
+  useEffect(()=>{
+    listarUsuarios()
+  },[])
   
   const listarUsuarios = async()=>{
     try{
@@ -30,9 +33,6 @@ export const UsuarioView = () => {
   }
   
   
-  useEffect(()=>{
-    listarUsuarios()
-  },[])
   
   
     const handleOpenModal = () => {

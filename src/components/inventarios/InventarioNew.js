@@ -127,6 +127,7 @@ export const InventarioNew = ({ handleOpenModal, listarInventarios }) => {
     }
 
     return (
+        <div className='modalBackground'>
         <div className='sidebar'>
             <div className='container-fluid'>
                 <div className='row'>
@@ -267,6 +268,7 @@ export const InventarioNew = ({ handleOpenModal, listarInventarios }) => {
 
                 </form>
             </div>
+        </div>
         </div>
     )
 }

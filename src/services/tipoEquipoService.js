@@ -15,7 +15,7 @@ const crearTiposEquipo = (data) => {
         }
     })
 }
-const editTiposEquipo = (tiposEquipoId,data) => {
+const editTipo = (tiposEquipoId,data) => {
     return axiosInstance.put(`tipo-equipo/${tiposEquipoId}`,data,{
         headers : {
             'Content-type':'application/json'
@@ -23,7 +23,7 @@ const editTiposEquipo = (tiposEquipoId,data) => {
     })
 }
 
-const getTiposEquipoPorId = (tiposEquipoId) => {
+const getTipoPorId = (tiposEquipoId) => {
     return axiosInstance.get(`tipo-equipo/${tiposEquipoId}`,{
          headers : {
              'Content-type':'application/json'
@@ -35,5 +35,5 @@ const getTiposEquipoPorId = (tiposEquipoId) => {
 //todo: crrar, actualizar, listar por id
 
 export {
-    getTiposEquipos, crearTiposEquipo, editTiposEquipo, getTiposEquipoPorId
+    getTiposEquipos, crearTiposEquipo, editTipo, getTipoPorId
 }

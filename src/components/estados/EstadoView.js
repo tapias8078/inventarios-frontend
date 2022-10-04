@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { EstadoNew } from './EstadoNew';
+import { getEstadosEquipos } from '../../services/estadoEquipoService';
 import Swal from 'sweetalert2';
 import { EstadoFila } from './EstadoFila';
-import { getEstadosEquipos } from '../../services/estadoEquipoService';
 
 export const EstadoView = () => {
   
@@ -13,6 +13,9 @@ export const EstadoView = () => {
   
   
 
+  useEffect(()=>{
+    listarEstados()
+  },[])
   
   
   const listarEstados = async()=>{
@@ -31,9 +34,6 @@ export const EstadoView = () => {
     }
   }
   
-  useEffect(()=>{
-    listarEstados()
-  },[])
   
     const handleOpenModal = () => {
       console.log('asasas');
@@ -60,8 +60,8 @@ export const EstadoView = () => {
   </thead>
   <tbody>    
       {
-        estados.map((estado, index)=>{
-          return <EstadoFila key={estado._id} estado={estado} index={index+1}/>
+        estados.map((estadoEquipo, index)=>{
+          return <EstadoFila key={estadoEquipo._id} estadoEquipo={estadoEquipo} index={index+1}/>
         })
       }   
   </tbody>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import Swal from 'sweetalert2'
-import { crearUsuarios } from '../../services/usuarioService'
+import { crearUsuario } from '../../services/usuarioService'
 
 export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {  
 
@@ -27,7 +27,7 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
                 text:'Cargando...'
             })
             Swal.showLoading()
-            const {data} = await crearUsuarios(usuario);
+            const {data} = await crearUsuario(usuario);
             console.log(data);
             Swal.close();
             handleOpenModal();
@@ -47,12 +47,13 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
     }
 
   return (<>
+  <div className='modalBackground'>
     <div className='sidebar'>
       <div className='container'>
         <div className='row'>
           <div className='col'>
             <div className='sidebar-header'>
-              <h3>Usuarios</h3>
+              <h3>Nuevo Usuario</h3>
               <i className='fa-solid fa-xmark' onClick={handleOpenModal}></i>
             </div>
           </div>
@@ -92,6 +93,7 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
           <button className='btn btn-primary'>Crear</button>
         </form>
       </div>
+    </div>
     </div>
     
     

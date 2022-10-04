@@ -8,14 +8,14 @@ const getEstadosEquipos = () => {
     })
 }
 
-const crearEstadosEquipo = (data) => {
+const crearEstadoEquipo = (data) => {
     return axiosInstance.post('estado-Equipo',data,{
         headers : {
             'Content-type':'application/json'
         }
     })
 }
-const editEstadosEquipo = (estadosEquipoId,data) => {
+const editEstadoEquipo = (estadosEquipoId,data) => {
     return axiosInstance.put(`estado-Equipo/${estadosEquipoId}`,data,{
         headers : {
             'Content-type':'application/json'
@@ -23,7 +23,7 @@ const editEstadosEquipo = (estadosEquipoId,data) => {
     })
 }
 
-const getEstadosEquipoPorId = (estadosEquipoId) => {
+const getEstadoEquipoPorId = (estadosEquipoId) => {
     return axiosInstance.get(`estado-Equipo/${estadosEquipoId}`,{
          headers : {
              'Content-type':'application/json'
@@ -34,5 +34,5 @@ const getEstadosEquipoPorId = (estadosEquipoId) => {
 //todo: crear, actualizar, listar por id
 
 export {
-    getEstadosEquipos, getEstadosEquipoPorId, crearEstadosEquipo, editEstadosEquipo
+    getEstadosEquipos, getEstadoEquipoPorId, crearEstadoEquipo, editEstadoEquipo
 }

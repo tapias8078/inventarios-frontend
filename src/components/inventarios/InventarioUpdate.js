@@ -51,7 +51,6 @@ export const InventarioUpdate = () => {
 
     }
     listarMarcas();
-
   }, []);
 
   useEffect(() => {
@@ -87,7 +86,7 @@ export const InventarioUpdate = () => {
   }, []);
 
   useEffect(() => {
-    getInventario();
+    getInventario()
   }, [inventarioId]);
 
   const getInventario = async () => {
@@ -147,6 +146,7 @@ export const InventarioUpdate = () => {
       });
       Swal.showLoading();
       const { data } = await editInventario(inventarioId, inventario);
+      window.history.back()
       console.log(data);
       Swal.close();
     } catch (error) {
@@ -165,6 +165,7 @@ export const InventarioUpdate = () => {
   }
 
   return (
+    <div className='modalBackground'>
     <div className=' container-fluid mt-3 mb-2'>
       <div className='card'>
         <div className='card-header'>
@@ -173,7 +174,7 @@ export const InventarioUpdate = () => {
         <div className='card-body'>
           <div className='row'>
             <div className='col-md-4'>
-              <img className='foto' src={inventario?.foto} />
+              <img className='w-50 ms-5' src={inventario?.foto} />
             </div>
             <div className='col-md-8'>
               <form onSubmit={(e) => handleOnSubmit(e)}>
@@ -295,7 +296,7 @@ export const InventarioUpdate = () => {
                 </div>
                 <div className='row'>
                   <div className='col'>
-                    <button className='btn btn-primary' >Actualizar</button>
+                    <button className='btn btn-success' >Actualizar</button>
                   </div>
                 </div>
 
@@ -304,6 +305,7 @@ export const InventarioUpdate = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

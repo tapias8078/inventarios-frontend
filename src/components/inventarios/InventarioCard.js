@@ -7,7 +7,7 @@ const InventarioCard = (props) => {
     return (
         <div className='col'>
             <div className='card'>
-                <img src={inventario.foto} className="card-img-top " alt="..." />
+                <img src={inventario.foto} className="card-img-top foto ms-1" alt="..." />
                 <div className='card-body'>
                     <h5 className='card-title'>Características</h5>
                     <hr />
@@ -16,6 +16,7 @@ const InventarioCard = (props) => {
                     <p className='card-text'>{`Usuario: ${inventario.usuario.nombre}`}</p>
                     <Link to={`inventarios/edit/${inventario._id}`}>Ver Más...</Link>
                 </div>
+                
             </div>
         </div>
     )

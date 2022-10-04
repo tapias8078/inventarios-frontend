@@ -12,33 +12,34 @@ export const MarcaView = () => {
   
   
   
-  const listarMarcas = async()=>{
-    try{
-      Swal.fire({
-        allowOutsideClick:false,
-        text:'Cargando'
-      })
-      Swal.showLoading()
-      const {data}=await getMarcas()
-      setMarcas(data)
-      Swal.close()
-    }catch(error){
-      console.log(error);
-      Swal.close()
-    }
-  }
-  
-  
   useEffect(()=>{
     listarMarcas()
   },[])
+ 
+
   
   
+  
+  const listarMarcas = async()=>{
+    try{
+      Swal.fire({
+          allowOutsideClick:false,
+          text:'Cargando'
+        })
+        Swal.showLoading()
+        const {data}=await getMarcas()
+        setMarcas(data)
+        Swal.close()
+      }catch(error){
+        console.log(error);
+        Swal.close()
+      }
+    }
+    
     const handleOpenModal = () => {
       console.log('asasas');
       setOpenModal(!openModal)
     }
-
 
   return (
     <div className='container mt-3 card'>          
@@ -60,7 +61,7 @@ export const MarcaView = () => {
   <tbody>    
       {
         marcas.map((marca, index)=>{
-          return <MarcaFila key={marca._id} marca={marca} index={index+1}/>
+          return <MarcaFila key={marca._id} marca={marca} index={index+1} />
         })
       }   
   </tbody>
